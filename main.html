@@ -1,8 +1,37 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <script type="text/javascript" src="./script.js">
-</script>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Manipulation Form</title>
+</head>
+<body>
+    <h3 id="url">https://localhost:8080/</h3>
 
+    <form id="form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year" required><br><br>
+
+        <button type="button" id="button">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('button').addEventListener('click', function() {
+            // Get the values from the input fields
+            const name = document.getElementById('name').value;
+            const year = document.getElementById('year').value;
+
+            // Create the query string
+			// if(name !== null && year !== 0)
+            const queryString = `?name=${encodeURIComponent(name)}&year=${encodeURIComponent(year)}`;
+
+            // Update the h3 element with the new URL
+            const urlElement = document.getElementById('url');
+            urlElement.textContent = `https://localhost:8080/${queryString}`;
+        });
+    </script>
+</body>
 </html>
